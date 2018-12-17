@@ -125,7 +125,7 @@ canvas元素本身并不能实现图形绘制功能，绘制图形的工作是�
 
 ### 2.5  清空画布
 
-context.clearRect(x,y,width,height);——清除指定矩形区域内的所有图形
+**context.clearRect(x,y,width,height);**——清除指定矩形区域内的所有图形
 
 ```html
 <!DOCTYPE html>
@@ -162,4 +162,69 @@ context.clearRect(x,y,width,height);——清除指定矩形区域内的所有�
 </body>
 </html>
 ```
+
+## 3.绘制贝塞尔曲线
+
+### 3.1 绘制二次方贝塞尔曲线
+
+**context.quadraticCurveTo(cp1x,cp1y,x,y)** 
+
+- cp1x,cp1y是控制点的坐标 
+- x,y是终点坐标 
+
+```js
+    <script>
+        var c = document.getElementById("myCanvas");
+        var context = c.getContext("2d");
+
+        //  开始绘制二次方贝塞尔曲线
+        // context.quadraticCurveTo(cp1x,cp1y,x,y)
+        // cp1x,cp1y是控制点的坐标
+        // x,y是终点坐标
+        context.strokeStyle="dark";
+        context.beginPath();
+        context.moveTo(0,200);
+        context.quadraticCurveTo(75,50,300,200);
+        context.stroke();
+        context.globalCompositeOperation="source-over";
+    </script>
+```
+
+效果图：
+
+![](3.1 绘制二次方贝塞尔曲线.JPG)
+
+
+
+### 3.2 绘制三次方贝塞尔曲线
+
+**context.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y);** 
+
+- cp1x,cp1y是第一个控制点的坐标 
+- cp2x,cp2y是第二个控制点的坐标 
+- x,y是终点坐标 
+
+```js
+<script>
+        var c = document.getElementById("myCanvas");
+        var context = c.getContext("2d");
+
+        //  开始绘制三次方贝塞尔曲线
+        // context.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y);
+        // cp1x,cp1y是第一个控制点的坐标
+        // cp2x,cp2y是第二个控制点的坐标
+        // x,y是终点坐标
+
+        context.strokeStyle="dark";
+        context.beginPath();
+        context.moveTo(0,200);
+        context.bezierCurveTo(25,50,75,50,300,200);
+        context.stroke();
+        context.globalCompositeOperation="source-over";
+    </script>
+```
+
+效果图：
+
+![](3.2 绘制三次方贝塞尔曲线.JPG)
 

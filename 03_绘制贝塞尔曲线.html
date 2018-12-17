@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03_绘制贝塞尔曲线</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="300" height="200" style="border:1px solid;">
+        您的浏览器不支持Canvas,请更新或更换浏览器！
+    </canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var context = c.getContext("2d");
+
+        //  开始绘制二次方贝塞尔曲线
+
+        // context.quadraticCurveTo(cp1x,cp1y,x,y)
+        // cp1x,cp1y是控制点的坐标
+        // x,y是终点坐标
+
+        // context.strokeStyle="dark";
+        // context.beginPath();
+        // context.moveTo(0,200);
+        // context.quadraticCurveTo(75,50,300,200);
+        // context.stroke();
+        // context.globalCompositeOperation="source-over";
+
+        //  开始绘制三次方贝塞尔曲线
+
+        // context.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y);
+        // cp1x,cp1y是第一个控制点的坐标
+        // cp2x,cp2y是第二个控制点的坐标
+        // x,y是终点坐标
+
+        context.strokeStyle="dark";
+        context.beginPath();
+        context.moveTo(0,200);
+        context.bezierCurveTo(25,50,75,50,300,200);
+        context.stroke();
+        context.globalCompositeOperation="source-over";
+        
+    </script>
+</body>
+
+</html>

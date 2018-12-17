@@ -1,6 +1,165 @@
 ## Canvas学习笔记
 
-> 2018-12-11
+> 2018-12-17
 
 > 深圳
+
+## 1.初识Canvas
+
+canvas元素本身并不能实现图形绘制功能，绘制图形的工作是由JavaScript来完成。
+
+```html
+    <canvas id="myCanvas" width="300" height="150" style="border:1px solid;">
+        您的浏览器不支持Canvas,请更新或更换浏览器！
+    </canvas>
+```
+
+## 2.Canvas绘制简单图形
+
+### 2.1 绘制直线
+
+```javascript
+<script>
+        var c = document.getElementById("myCanvas");
+        var context = c.getContext("2d");
+        
+        // 绘制直线
+         context.moveTo(0,0);    // 起点坐标
+         context.lineTo(200,100);    // 直线终点坐标
+         context.stroke();   // 描绘轮廓
+  </script>
+```
+
+效果图：
+
+![](2.1 绘制直线.JPG)
+
+### 2.2 绘制矩形 
+
+```javascript
+<script>
+        var c = document.getElementById("myCanvas");
+        var context = c.getContext("2d");
+
+        // 绘制矩形
+        context.fillStyle = "#FF00FF";     // 指定要填充区域的颜色
+        context.fillRect(0, 0, 200, 100);   // 绘制用颜色填充区域的矩形
+        context.strokeStyle = "#FFFFFF";   // 描指定要绘制的轮廓（或线条）的颜色
+        context.strokeRect(0, 0, 100, 50);  // 绘制轮廓（或线条）
+    </script>
+```
+
+效果图：
+
+![](2.2 绘制矩形 .JPG)
+
+### 2.3 绘制圆形
+
+```javascript
+<script>
+        var c = document.getElementById("myCanvas");
+        var context = c.getContext("2d");
+
+        // 绘制圆形（实心）
+        context.fillStyle = "#FF00FF";
+        context.beginPath();    // 开始绘制路径
+        // arc(x,y,radius,startAngle,endAngle,anticlockwise)方法本意是绘制弧线
+        // x,y表示起点坐标
+        // radius表示圆形的半径
+        // startAngle,endAngle表示开始、结束的角度
+        // anticlockwise表示是否按顺时针方向绘制
+        context.arc(100, 50, 50, 0, 60, true);
+        context.closePath();    // 结束绘制路径（将图形闭合起来）
+        context.fill();
+
+		// 绘制圆形（空心）
+        context.strokeStyle="#FF00FF";
+        context.beginPath();    // 开始绘制路径
+        // arc(x,y,radius,startAngle,endAngle,anticlockwise)方法本意是绘制弧线
+        // x,y表示起点坐标
+        // radius表示圆形的半径
+        // startAngle,endAngle表示开始、结束的角度
+        // anticlockwise表示是否按顺时针方向绘制
+        context.arc(100, 50, 50, 0, 60, true);
+        context.closePath();    // 结束绘制路径（将图形闭合起来）
+        context.stroke();
+    </script>
+```
+
+效果图：
+
+![](2.3 绘制圆形（实心）.JPG)
+
+![](2.3 绘制圆形（空心）.JPG)
+
+### 2.4 绘制三角形
+
+```javascript
+  <script>
+		// 绘制三角形（实心）
+        context.fillStyle="#FF00FF";
+        context.beginPath();
+        context.moveTo(20,20);
+        context.lineTo(150,20);
+        context.lineTo(20,150);
+        context.fill();
+
+        // 绘制三角形（空心）
+        context.strokeStyle="#FF00FF";
+        context.beginPath();
+        context.moveTo(20,20);
+        context.lineTo(150,20);
+        context.lineTo(20,150);
+        context.closePath();
+        context.stroke();
+    </script>
+```
+
+效果图：
+
+![](2.4 绘制三角形（实心）.JPG)
+
+![](2.4 绘制三角形（空心）.JPG)
+
+
+
+### 2.5  清空画布
+
+context.clearRect(x,y,width,height);——清除指定矩形区域内的所有图形
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02_绘制简单图形</title>
+    <script>
+        // 清空画布
+        function clearMap() {
+            context.clearRect(0, 0, 300, 200);
+        }
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="300" height="150" style="border:1px solid;">
+        您的浏览器不支持Canvas,请更新或更换浏览器！
+    </canvas>
+    <input type="button" value="清空画布" onclick="clearMap()">
+    <script>
+        var c = document.getElementById("myCanvas");
+        var context = c.getContext("2d");
+       // 绘制三角形（空心）
+        context.strokeStyle = "#FF00FF";
+        context.beginPath();
+        context.moveTo(20, 20);
+        context.lineTo(150, 20);
+        context.lineTo(20, 150);
+        context.closePath();
+        context.stroke();
+    </script>
+</body>
+</html>
+```
 

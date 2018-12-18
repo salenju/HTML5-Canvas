@@ -24,9 +24,10 @@
         var context = c.getContext("2d");
 
         // 绘制直线
-        // context.moveTo(0,0);    // 起点坐标
+        // context.lineWidth=10;    // 线的宽度
+        // context.moveTo(0,0);    // 把画笔移到Canvas画布中的某个位置（起点坐标）
         // context.lineTo(200,100);    // 直线终点坐标
-        // context.stroke();   // 描绘轮廓
+        // context.stroke();   // 沿着绘制路径的坐标点顺序绘制直线
 
         // 绘制矩形
         // context.fillStyle = "#FF00FF";     // 指定要填充区域的颜色
@@ -36,44 +37,44 @@
 
         // 绘制圆形（实心）
         // context.fillStyle = "#FF00FF";
-        // context.beginPath();    // 开始绘制路径
+        // context.beginPath();    // 开始一个新的绘制路径
         // // arc(x,y,radius,startAngle,endAngle,anticlockwise)方法本意是绘制弧线
         // // x,y表示起点坐标
         // // radius表示圆形的半径
         // // startAngle,endAngle表示开始、结束的角度
         // // anticlockwise表示是否按顺时针方向绘制
         // context.arc(100, 50, 50, 0, 60, true);
-        // context.closePath();    // 结束绘制路径（将图形闭合起来）
+        // context.closePath();    // 如果当前的绘制路径是打开的，则关闭改绘制路径。它会尝试用直线连接当前端点与起始端点来关闭路径，但如果图形已关闭（例如调用stroke()）或者只有一个点，它什么也不做
         // context.fill();
 
         // 绘制圆形（空心）
         // context.strokeStyle="#FF00FF";
-        // context.beginPath();    // 开始绘制路径
+        // context.beginPath();    // 开始一个新的绘制路径
         // // arc(x,y,radius,startAngle,endAngle,anticlockwise)方法本意是绘制弧线
         // // x,y表示起点坐标
         // // radius表示圆形的半径
         // // startAngle,endAngle表示开始、结束的角度
         // // anticlockwise表示是否按顺时针方向绘制
         // context.arc(100, 50, 50, 0, 60, true);
-        // context.closePath();    // 结束绘制路径（将图形闭合起来）
         // context.stroke();
+        // context.closePath();    // 结束绘制路径（将图形闭合起来）
 
         // 绘制三角形（实心）
         // context.fillStyle="#FF00FF";
-        // context.beginPath();
+        // context.beginPath();    // 开始一个新的绘制路径
         // context.moveTo(20,20);
         // context.lineTo(150,20);
         // context.lineTo(20,150);
         // context.fill();
 
         // 绘制三角形（空心）
-        context.strokeStyle = "#FF00FF";
-        context.beginPath();
-        context.moveTo(20, 20);
-        context.lineTo(150, 20);
-        context.lineTo(20, 150);
-        context.closePath();
-        context.stroke();
+        // context.strokeStyle = "#FF00FF";
+        // context.beginPath();    // 开始一个新的绘制路径
+        // context.moveTo(20, 20);
+        // context.lineTo(150, 20);
+        // context.lineTo(20, 150);
+        // context.closePath();
+        // context.stroke();
 
     </script>
 

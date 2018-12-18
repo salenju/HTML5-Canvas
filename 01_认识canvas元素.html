@@ -14,7 +14,15 @@
     </canvas>
 
     <script>
+        // 检测Canvas对象以及getContext()方法是否存在
+        function canvasSupport(e){
+            return !!e.getContext;
+        }
+
         var c = document.getElementById("myCanvas");
+        if(!canvasSupport(c)) {
+            return;
+        }
         var context = c.getContext("2d");
 
         // 绘制矩形并填充颜色

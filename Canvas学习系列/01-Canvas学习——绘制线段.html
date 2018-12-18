@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01-Canvas学习——绘制线段</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="border:1px solid;">
+        您的浏览器不支持Canvas,请更新或更换浏览器！
+    </canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // 绘制简单直线
+        function drawScreen(){
+            ctx.lineWidth = 10;     // 改变线条的粗细
+            ctx.strokeStyle="#FF00FF";  // 改变线条的颜色（默认为黑色）
+            ctx.moveTo(50,10);     // 起始点
+            ctx.lineTo(350,100);    // 第二点（如果是一条直线的话则是终点）
+            ctx.stroke();
+        }
+
+        // 绘制较复杂直线
+        function drawLine_1() {
+            ctx.lineWidth=4;
+            ctx.strokeStyle="#FF00FF";
+            
+            ctx.beginPath();
+            ctx.moveTo(50,10);
+            ctx.lineTo(150,10);
+            ctx.lineTo(150,200);
+            ctx.lineTo(200,200);
+            ctx.lineTo(200,150);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        // stroke() 与 closePath()先后顺序对比
+        function drawLine_2() {
+            ctx.lineWidth=4;
+            ctx.strokeStyle="#FF00FF";
+
+            ctx.beginPath();
+            ctx.moveTo(50,10);
+            ctx.lineTo(150,10);
+            ctx.lineTo(150,200);
+            ctx.lineTo(200,200);
+            ctx.lineTo(200,150);
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.strokeStyle="blue";
+            ctx.beginPath();
+            ctx.moveTo(250,10);
+            ctx.lineTo(350,10);
+            ctx.lineTo(350,200);
+            ctx.lineTo(400,200);
+            ctx.lineTo(400,150);
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        window.onload = function() {
+            // drawScreen();
+            // drawLine_1();
+            drawLine_2();
+        }
+    </script>
+</body>
+
+</html>

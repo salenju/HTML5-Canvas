@@ -14,7 +14,15 @@
     </canvas>
 
     <script>
+        // 检测Canvas对象以及getContext()方法是否存在
+        function canvasSupport(e) {
+            return !!e.getContext;
+        }
+
         var c = document.getElementById("myCanvas");
+        if (!canvasSupport(c)) {
+            return;
+        }
         var context = c.getContext("2d");
 
         //  开始绘制二次方贝塞尔曲线
@@ -24,7 +32,7 @@
         // x,y是终点坐标
 
         // context.strokeStyle="dark";
-        // context.beginPath();
+        // context.beginPath();    // 开始一个新的绘制路径
         // context.moveTo(0,200);
         // context.quadraticCurveTo(75,50,300,200);
         // context.stroke();
@@ -37,13 +45,13 @@
         // cp2x,cp2y是第二个控制点的坐标
         // x,y是终点坐标
 
-        context.strokeStyle="dark";
-        context.beginPath();
-        context.moveTo(0,200);
-        context.bezierCurveTo(25,50,75,50,300,200);
+        context.strokeStyle = "dark";
+        context.beginPath();    // 开始一个新的绘制路径
+        context.moveTo(0, 200);
+        context.bezierCurveTo(25, 50, 75, 50, 300, 200);
         context.stroke();
-        context.globalCompositeOperation="source-over";
-        
+        context.globalCompositeOperation = "source-over";
+
     </script>
 </body>
 

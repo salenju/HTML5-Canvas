@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03-Canvas学习——绘制线型</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="border:1px solid;">
+        您的浏览器不支持Canvas,请更新或更换浏览器！
+    </canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // 线段端点
+        function drawLineCap_1() {
+            ctx.lineWidth = 30;
+
+            // 线段端点-butt
+            ctx.beginPath();
+            ctx.lineCap = "butt";
+            ctx.moveTo(30, 30);
+            ctx.lineTo(400, 30);
+            ctx.fillText("butt", 410, 40);
+            ctx.stroke();
+            ctx.closePath();
+
+            // 线段端点-round
+            ctx.beginPath();
+            ctx.lineCap = "round";
+            ctx.moveTo(30, 100);
+            ctx.lineTo(400, 100);
+            ctx.fillText("round", 430, 110);
+            ctx.stroke();
+            ctx.closePath();
+
+            // 线段端点-square
+            ctx.beginPath();
+            ctx.lineCap = "square";
+            ctx.moveTo(30, 180);
+            ctx.lineTo(400, 180);
+            ctx.fillText("square", 430, 190);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        window.onload = function () {
+            drawLineCap_1();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05-Canvas学习——绘制矩形</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="border:1px solid;">
+        您的浏览器不支持Canvas,请更新或更换浏览器！
+    </canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // function drawRect_1() {
+        //     ctx.lineWidth=4;
+        //     ctx.fillStyle="orange";
+        //     ctx.fillRect(242,12,96,96);
+        //     ctx.strokeStyle="#9f9";
+        //     ctx.strokeRect(240,10,100,100);
+        // }
+
+        function drawRect_2() {
+            ctx.lineWidth=10;
+            ctx.strokeStyle="#F99";
+
+            ctx.lineJoin="bevel";
+            ctx.strokeRect(10,10,200,200);
+
+            ctx.lineJoin="round";
+            ctx.strokeRect(250,10,200,200);
+        }
+        
+        window.onload = function () {
+            // drawRect_1();
+            drawRect_2();
+        }
+    </script>
+</body>
+
+</html>

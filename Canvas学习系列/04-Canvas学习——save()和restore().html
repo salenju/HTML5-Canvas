@@ -44,27 +44,36 @@
 
             ctx.restore();  // 取出堆栈3（第三个状态）
             ctx.beginPath();
-            ctx.arc(225,75,22,0,Math.PI*2,true);
+            ctx.arc(225, 75, 22, 0, Math.PI * 2, true);
             ctx.closePath();
             ctx.fill();
 
             ctx.restore();  // 取出堆栈2（第二个状态）
             ctx.beginPath();
-            ctx.arc(320,75,15,0,Math.PI*2,true);
+            ctx.arc(320, 75, 15, 0, Math.PI * 2, true);
             ctx.closePath();
             ctx.fill();
 
             ctx.restore();  // 取出堆栈1（第一个状态）
             ctx.beginPath();
-            ctx.arc(400,75,8,0,Math.PI*2,true);
+            ctx.arc(400, 75, 8, 0, Math.PI * 2, true);
             ctx.closePath();
             ctx.fill();
         }
 
         // 绘制扇形
-        function drawSector(){
+        // ctx:Canvas 绘图环境
+        // x,y:位移目标点
+        // r:圆弧半径
+        // sDeg:旋转起始角度
+        // eDeg:旋转终止角度
+        function drawSector(ctx, x, y, r, sDeg, eDeg) {
             // 初始保存（状态1）
+            ctx,save();
+
             // 移动到目标点
+            ctx.translate(x,y);
+            
             // 画出圆弧
             // 再次保存以备旋转（状态2）
             // 旋转至终点角度

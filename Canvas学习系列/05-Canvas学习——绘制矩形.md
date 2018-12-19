@@ -69,3 +69,86 @@ Canvas提供的绘制矩形的API：
 
 ![](5.2.1 绘制斜角和圆角的矩形框.JPG)
 
+第二步：绘制填充矩形
+
+```js
+<script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        
+        // 绘制填充矩形
+        function drawRect_3() {
+            ctx.lineWidth=10;
+            ctx.strokeStyle="#F36";
+            ctx.fillStyle="#F36";
+
+            ctx.lineJoin="bevel";
+            ctx.strokeRect(10,10,200,200);
+            ctx.fillRect(15,15,190,190);
+
+            ctx.lineJoin="round";
+            ctx.strokeRect(250,10,200,200);
+            ctx.fillRect(255,15,190,190);
+        }
+
+        window.onload = function () {
+            drawRect_3();
+        }
+    </script>
+```
+
+效果图：
+
+![](5.2.2 绘制填充矩形.JPG)
+
+## 3、通过JS拖拽绘制矩形
+
+```js
+<script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // 通过JS拖拽绘制矩形
+        var rect = {},
+            drag = false;
+        // 第一步：监听画布上的鼠标事件
+        c.addEventListener('mousedown', mouseDown, false);
+        c.addEventListener('mouseup', mouseUp, false);
+        c.addEventListener('mousemove', mouseMove, false);
+
+        // 第二步：mouseDown()函数
+        function mouseDown(e) {
+            rect.startX = e.pageX - this.offsetLeft;
+            rect.startY = e.pageY - this.offsetTop;
+            drag = true;
+        }
+        // 第三步：mouseUp()函数
+        function mouseUp() {
+            drag = false;
+        }
+        // 第四步：mouseMove()函数
+        function mouseMove(e) {
+            if (drag) {
+                rect.w = (e.pageX - this.offsetLeft) - rect.startX;
+                rect.h = (e.pageY - this.offsetTop) - rect.startY;
+                ctx.clearRect(0, 0, c.width, c.height);
+                drawRect_4("fill");
+            }
+        }
+
+        function drawRect_4(type) {
+            if (type === "fill") {
+                ctx.fillStyle="#F36";
+                ctx.fillRect(rect.startX, rect.startY, rect.w, rect.h);
+            } else if (type === "stroke") {
+                ctx.strokeStyle="#F36";
+                ctx.strokeRect(rect.startX, rect.startY, rect.w, rect.h);
+            }
+        }
+    </script>
+```
+
+效果图：
+
+![](5.3.1 通过JS拖拽绘制矩形.JPG)
+

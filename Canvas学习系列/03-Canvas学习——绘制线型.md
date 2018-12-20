@@ -2,6 +2,8 @@
 
 > 2018-12-18
 
+> [参考链接](https://www.w3cplus.com/canvas/canvas-line-style.html)
+
 > 深圳
 
 Canvas线型主要包括**线宽**、**线段端点**和**线段终点**

@@ -2,6 +2,8 @@
 
 > 2018-12-18
 
+> [参考链接](https://www.w3cplus.com/canvas/canvas-states.html)
+
 > 深圳
 
 ## 1、Canvas状态的保存和恢复

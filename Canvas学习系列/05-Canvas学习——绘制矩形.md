@@ -2,6 +2,8 @@
 
 > 2018-12-19
 
+> [参考链接](https://www.w3cplus.com/canvas/drawing-rectangular.html)
+
 > 深圳
 
 Canvas提供的绘制矩形的API：
@@ -152,5 +154,10 @@ Canvas提供的绘制矩形的API：
 
 ![](images/5.3.1 通过JS拖拽绘制矩形.JPG)
 
+## 4、小结
 
-
+- 使用Canvas中的路径`moveTo()`、`lineTo()`配合`fill()`和`stroke()`绘制矩形
+- 使用Canvas中的`rect(x,y,width,height)`配合`fill()`和`stroke()`绘制矩形
+- 使用Canvas中的`fillRect(x,y,width,height)`绘制一个填充的矩形
+- 使用Canvas的`strokeRect(x,y,width,height)`绘制一个边框矩形
+- 使用`clearRect(x,y,width,height)`清除画布

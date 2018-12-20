@@ -30,7 +30,7 @@
 
 效果图：
 
-![](1.1绘制简单直线.JPG)
+![](images/1.1绘制简单直线.JPG)
 
 ## 2、beginPath()和closePath()
 
@@ -71,7 +71,7 @@
 
 效果图：
 
-![](1.2.1 先stroke()后closePath().JPG)
+![](images/1.2.1 先stroke()后closePath().JPG)
 
 ### 2.2 先closePath()后stroke()
 
@@ -113,7 +113,7 @@
 
 效果图：
 
-![](1.2.2 先stroke()后closePath().JPG)
+![](images/1.2.2 先stroke()后closePath().JPG)
 
 ## 3、小结
 

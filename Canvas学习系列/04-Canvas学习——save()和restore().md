@@ -30,7 +30,7 @@
 | shadowOffsetY            | 阴影垂直偏移值                                               |
 | strokeStyle              | 线段颜色                                                     |
 
-![](4.2 理解save()和restore().png)
+![](images/4.2 理解save()和restore().png)
 
 ## 3、实例理解save()和restore()
 
@@ -91,5 +91,5 @@
 
 效果图：
 
-![](4.3 实例理解save()和restore().JPG)
+![](images/4.3 实例理解save()和restore().JPG)
 

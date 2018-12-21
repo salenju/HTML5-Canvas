@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07-Canvas学习——Canvas学习：贝塞尔曲线</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="border:1px solid">
+        您的浏览器不支持Canvas,请更新或更换浏览器！
+    </canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // 绘制二次贝塞尔曲线
+        function drawQuadraticCurve() {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#F36";
+            ctx.fillStyle = "red";
+
+            // 绘制起始点/控制点
+            ctx.fillRect(100 - 4, 50 - 4, 8, 8);
+            ctx.fillRect(100 - 4, 200 - 4, 8, 8);
+            ctx.fillRect(300 - 4, 200 - 4, 8, 8);
+
+            // 用直线连接两个参考点
+            ctx.beginPath();
+            ctx.strokeStyle = "red";
+            ctx.moveTo(100, 50);
+            ctx.lineTo(100, 200);
+            ctx.lineTo(300, 200);
+            ctx.stroke();
+            ctx.closePath();
+
+            // 调用quadraticCurveTo()绘制二次贝塞尔曲线
+            ctx.beginPath();
+            ctx.strokeStyle = "blue";
+            ctx.moveTo(100, 50);
+            ctx.quadraticCurveTo(100, 200, 300, 200);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        // 绘制气泡
+        function drawBubble() {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#F36";
+            ctx.fillStyle = "red";
+
+            ctx.beginPath();
+            ctx.moveTo(75, 25);
+            ctx.quadraticCurveTo(25, 25, 25, 62.5);
+            ctx.quadraticCurveTo(25, 100, 50, 100);
+            ctx.quadraticCurveTo(50, 120, 30, 125);
+            ctx.quadraticCurveTo(60, 120, 65, 100);
+            ctx.quadraticCurveTo(125, 100, 125, 62.5);
+            ctx.quadraticCurveTo(125, 25, 75, 25);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        // 绘制三次贝塞尔曲线
+        function drawBezierCurve() {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#F36";
+            ctx.fillStyle = "red";
+
+            // 绘制起始点/控制点
+            ctx.fillRect(100 - 4, 50 - 4, 8, 8);
+            ctx.fillRect(100 - 4, 200 - 4, 8, 8);
+            ctx.fillRect(300 - 4, 200 - 4, 8, 8);
+            ctx.fillRect(400 - 4, 150 - 4, 8, 8);
+
+            ctx.beginPath();
+            ctx.strokeStyle = "red";
+            ctx.moveTo(100, 50);
+            ctx.lineTo(100, 200);
+            ctx.stroke();
+            ctx.save();
+
+            ctx.beginPath();
+            ctx.restore();
+            ctx.moveTo(300, 200);
+            ctx.lineTo(400, 150);
+            ctx.stroke();
+            ctx.closePath();
+
+            // 绘制三次贝塞尔曲线
+            ctx.beginPath();
+            ctx.strokeStyle = "purple";
+            ctx.moveTo(100, 50);
+            ctx.bezierCurveTo(100, 200, 300, 200, 400, 150);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        // 绘制心形
+        function drawHeart() {
+            ctx.lineWidth = 1;
+            ctx.fillStyle = "pink";
+
+            ctx.beginPath();
+            ctx.moveTo(75, 40);
+            ctx.bezierCurveTo(75, 37, 70, 25, 50, 25); 
+            ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5); 
+            ctx.bezierCurveTo(20, 80, 40, 102, 75, 120); 
+            ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5); 
+            ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25); 
+            ctx.bezierCurveTo(85, 25, 75, 37, 75, 40); 
+            ctx.fill();
+        }
+
+        window.onload = function () {
+            // drawQuadraticCurve();
+            // drawBubble();
+            // drawBezierCurve();
+            drawHeart();
+        }
+    </script>
+</body>
+
+</html>

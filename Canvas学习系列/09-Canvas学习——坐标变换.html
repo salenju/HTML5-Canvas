@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>09-Canvas学习——坐标变换</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="border:1px solid">
+        您的浏览器不支持Canvas,请更新或更换浏览器！
+    </canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var w = c.width,
+            h = c.height;
+
+        // translate
+        function drawTanslate() {
+            for (var i = 0; i < 4; i++) {   // x
+                for (var j = 0; j < 4; j++) {   // y
+                    ctx.fillStyle = "rgba(" + (120 + j * 10) + "," + (185 - i * 10) + "," + (10 + j * 3) + ",1)";
+                    ctx.save();
+
+                    // 通过translate移动坐标
+                    ctx.translate(i * (w - 50) / 4 + (i + 1) * 10, j * (h - 50) / 4 + (j + 1) * 10);
+                    // 每一个矩形的起点都是(0,0)
+                    ctx.fillRect(0, 0, (w - 50) / 4, (h - 50) / 4);
+                    ctx.restore();
+                }
+            }
+        }
+
+        // rotate
+        function drawRotate(ctx, w, h) {
+            // 将Canvas画布坐标原点移动到画布中心位置
+            ctx.translate(w / 2, h / 2);
+            for (var i = 0; i < 10; i++) {  // 圈数
+                ctx.save();
+                ctx.fillStyle = "rgba(" + ( i * 50) + "," + (255 - i * 50) + ",255)";
+                
+                for (var j = 0; j < i * 10; j++) {  // 每圈圆点个数
+                    // 旋转坐标
+                    ctx.rotate(Math.PI *2/(i * 10));
+                    ctx.beginPath();
+                    ctx.arc(0,i*20,5,0,Math.PI*2,true);
+                    ctx.fill();
+                    ctx.closePath();
+                }
+                ctx.restore();
+            }
+        }
+
+        window.onload = function () {
+            // drawTanslate();
+            drawRotate(ctx,w,h);
+        }
+    </script>
+</body>
+
+</html>

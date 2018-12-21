@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10-Canvas学习——绘制文本</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="border:1px solid">
+        您的浏览器不支持Canvas,请更新或更换浏览器！
+    </canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var w = c.width,
+            h = c.height;
+
+        // 绘制填充文本
+        function drawFillText(ctx, text, w, h) {
+            ctx.fillStyle = "#F90";
+            ctx.textAlign = "center";
+            ctx.font = "48px Airal";
+
+            ctx.fillText(text, w / 2, h / 2);
+        }
+
+        // 绘制描边文本
+        function drawStrokeText(ctx, text, w, h) {
+            ctx.strokeStyle = "#F90";
+            ctx.textAlign = "center";
+            ctx.font = "48px Airal";
+
+            ctx.strokeText(text, w / 2, h / 2);
+        }
+
+        // 绘制填充 + 描边文本
+        function drawText(ctx, text, w, h) {
+            ctx.strokeStyle = "#0081CC";
+            ctx.fillStyle = "#F40";
+            ctx.lineWidth = 2;
+            ctx.font = "48px Airal";
+            ctx.textAlign = "center";
+
+            ctx.fillText(text, w / 2, h / 2);
+            ctx.strokeText(text, w / 2, h / 2);
+        }
+
+        window.onload = function () {
+            // drawFillText(ctx, "Hello,Salen!", w, h);
+            // drawStrokeText(ctx, "Hello,Salen!", w, h);
+            drawText(ctx, "Hello,Salen!", w, h);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>11-Canvas学习——图像合成</title>
+</head>
+
+<body>
+    <script>
+        // globalCompositeOperation所有属性值效果展示
+        function drawScreen() {
+            var w = 300,
+                h = 300;
+
+            var compositing = ['source-over', 'source-in', 'source-out', 'source-atop', 'destination-over', 'destination-in', 'destination-out', 'destination-atop', 'lighter', 'copy', 'xor', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'];
+            var len = compositing.length;
+            var first = document.body.firstChild;
+            // 在body中创建canvas对象
+            for (i = 0; i < len; i++) {
+                var canva = document.createElement('canvas');
+                canva.width = w;
+                canva.height = h;
+                document.body.insertBefore(canva, first);
+            }
+
+            // 获取所有的canvas对象
+            var canvas = document.querySelectorAll('canvas');
+            var canvasLen = canvas.length;
+
+            // 在每个canvas对象中完成不同属性的图像合成
+            for (var j = 0; j < canvasLen; j++) {
+                var ctx = canvas[j].getContext("2d");
+                ctx.save();
+                ctx.translate(w / 2, h / 2);
+                ctx.fillStyle = "red";
+                ctx.beginPath();
+                ctx.arc(-40, 20, 80, 0, Math.PI * 2, true);
+                ctx.fill();
+                ctx.closePath();
+
+                ctx.globalCompositeOperation  = compositing[j];
+
+                ctx.fillStyle = "#F40";
+                ctx.beginPath();
+                ctx.arc(40, 20, 80, 0, Math.PI * 2, true);
+                ctx.fill();
+                ctx.closePath();
+                ctx.restore();
+
+                ctx.fillStyle = "black";
+                ctx.textBaseLine = "middle";
+                ctx.textAlign = "center";
+                ctx.font = "30px Arial";
+                ctx.fillText((j + 1) + ":" + compositing[j], w / 2, 40);
+            }
+        }
+
+        window.onload = function () {
+            drawScreen();
+        }
+    </script>
+</body>
+
+</html>
